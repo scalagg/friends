@@ -1,0 +1,36 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.5.31'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+}
+
+group 'gg.scala'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url = "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
+
+    maven { url 'https://jitpack.io' }
+    maven { url 'https://papermc.io/repo/repository/maven-public/' }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.31"
+
+    compileOnly "io.papermc:paperlib:1.0.6"
+    compileOnly fileTree(dir: "lib")
+
+    compileOnly "com.github.mkotb:ConfigAPI:e1c8df3f13"
+    compileOnly "org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT"
+}
+
+shadowJar {
+    archiveClassifier.set("")
+
+    archiveFileName = "Friends.jar"
+}
+
+tasks.build.dependsOn(shadowJar)
