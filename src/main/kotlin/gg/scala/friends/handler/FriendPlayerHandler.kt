@@ -5,7 +5,6 @@ import com.solexgames.datastore.commons.layer.impl.MongoStorageLayer
 import com.solexgames.datastore.commons.storage.impl.MongoStorageBuilder
 import gg.scala.friends.player.FriendPlayer
 import gg.scala.lemon.Lemon
-import gg.scala.lemon.player.LemonPlayer
 import net.evilblock.cubed.acf.bukkit.contexts.OnlinePlayer
 import net.evilblock.cubed.serializers.Serializers
 import org.bukkit.entity.Player
@@ -57,6 +56,11 @@ object FriendPlayerHandler
                 )
             }
         }
+    }
+
+    fun lateLoad(uniqueId: UUID)
+    {
+        find(uniqueId)?.lateLoad()
     }
 
     fun find(uuid: UUID): FriendPlayer?

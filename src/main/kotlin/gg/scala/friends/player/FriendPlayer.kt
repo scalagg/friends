@@ -20,4 +20,9 @@ data class FriendPlayer(
     {
         return FriendPlayerHandler.save(this)
     }
+
+    fun lateLoad()
+    {
+
+    }
 }
